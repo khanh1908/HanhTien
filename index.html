@@ -8,629 +8,1032 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    #fff0f5 0%,
+    #fce4ec 50%,
+    #f8bbd0 100%
+  );
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Nunito', 'Georgia', sans-serif;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   FLOATING HEARTS / PETALS
+========================= */
+
+.petals {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.petal {
+  position: absolute;
+
+  bottom: -40px;
+
+  animation: floatUp linear infinite;
+
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(0deg)
+      scale(1);
+
+    opacity: 0.8;
   }
 
-  body {
-    background: linear-gradient(
-      135deg,
-      #fff0f5 0%,
-      #fce4ec 50%,
-      #f8bbd0 100%
-    );
+  100% {
+    transform:
+      translateY(-110vh)
+      rotate(540deg)
+      scale(0.5);
 
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: 'Nunito', 'Georgia', sans-serif;
-    overflow: hidden;
+    opacity: 0;
   }
 
-  /* =========================
-     FLOATING PETALS
-  ========================= */
+}
 
-  .petals {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 
-    pointer-events: none;
-    z-index: 0;
+/* =========================
+   CARD / PAGE
+========================= */
+
+.page {
+  display: none;
+
+  position: relative;
+
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  backdrop-filter: blur(16px);
+
+  border: 1.5px solid rgba(255, 182, 193, 0.6);
+
+  border-radius: 28px;
+
+  padding: 48px 44px;
+
+  max-width: 540px;
+
+  width: 92%;
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 40px rgba(255, 105, 145, 0.18),
+    0 2px 8px rgba(255, 182, 193, 0.3);
+
+  animation:
+    fadeIn 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.97);
   }
 
-  .petal {
-    position: absolute;
-    bottom: -40px;
+  to {
+    opacity: 1;
 
-    animation: floatUp linear infinite;
-    opacity: 0.7;
+    transform:
+      translateY(0)
+      scale(1);
   }
 
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) rotate(0deg) scale(1);
-      opacity: 0.8;
-    }
+}
 
-    100% {
-      transform: translateY(-110vh) rotate(540deg) scale(0.5);
-      opacity: 0;
-    }
+
+/* =========================
+   START PAGE
+========================= */
+
+.start-heart {
+  font-size: 82px;
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  animation:
+    pulse 1.3s ease-in-out infinite;
+}
+
+.start-title {
+  color: #e91e8c;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  margin-bottom: 14px;
+}
+
+.start-sub {
+  color: #8d4e75;
+
+  font-size: 15.5px;
+
+  line-height: 1.8;
+
+  margin-bottom: 28px;
+}
+
+.start-note {
+  font-size: 13px;
+
+  color: #b47791;
+
+  margin-top: 14px;
+}
+
+
+/* =========================
+   PAGE 1
+========================= */
+
+.icon-wrap {
+  font-size: 72px;
+
+  display: block;
+
+  margin-bottom: 16px;
+
+  animation:
+    bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+  0%, 100% {
+    transform: translateY(0);
   }
 
-  /* =========================
-     CARD
-  ========================= */
-
-  .page {
-    display: none;
-
-    position: relative;
-    z-index: 1;
-
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-
-    border: 1.5px solid rgba(255, 182, 193, 0.6);
-    border-radius: 28px;
-
-    padding: 48px 44px;
-
-    max-width: 540px;
-    width: 92%;
-
-    text-align: center;
-
-    box-shadow:
-      0 8px 40px rgba(255, 105, 145, 0.18),
-      0 2px 8px rgba(255, 182, 193, 0.3);
-
-    animation: fadeIn 0.7s cubic-bezier(.4, 0, .2, 1);
+  50% {
+    transform: translateY(-10px);
   }
 
-  .page.active {
-    display: block;
-  }
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px) scale(0.97);
-    }
+h1 {
+  color: #e91e8c;
 
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
+  font-size: 20px;
 
-  /* =========================
-     TRANG BẮT ĐẦU
-  ========================= */
+  font-weight: 700;
 
-  .start-heart {
-    font-size: 82px;
-    display: block;
-    margin-bottom: 18px;
+  margin-bottom: 24px;
 
-    animation: pulse 1.3s ease-in-out infinite;
-  }
+  letter-spacing: 1px;
+}
 
-  .start-title {
-    color: #e91e8c;
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
+.letter {
+  color: #6d4c61;
 
-  .start-sub {
-    color: #8d4e75;
-    font-size: 15.5px;
-    line-height: 1.8;
-    margin-bottom: 28px;
-  }
+  font-size: 15.5px;
 
-  .start-note {
-    font-size: 13px;
-    color: #b47791;
-    margin-top: 14px;
-  }
+  line-height: 2;
 
-  /* =========================
-     PAGE 1
-  ========================= */
+  text-align: left;
 
-  .icon-wrap {
-    font-size: 72px;
-    display: block;
-    margin-bottom: 16px;
+  margin-bottom: 24px;
 
-    animation: bounce 1.6s ease-in-out infinite;
-  }
+  background:
+    rgba(255, 182, 193, 0.12);
 
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
+  border-left:
+    3px solid #f48fb1;
 
-    50% {
-      transform: translateY(-10px);
-    }
-  }
+  padding: 16px 20px;
 
-  h1 {
-    color: #e91e8c;
-    font-size: 20px;
-    font-weight: 700;
+  border-radius: 12px;
+}
 
-    margin-bottom: 24px;
-    letter-spacing: 1px;
-  }
+.letter p + p {
+  margin-top: 12px;
+}
 
-  .letter {
-    color: #6d4c61;
-    font-size: 15.5px;
-    line-height: 2;
+.question {
+  color: #e91e8c;
 
-    text-align: left;
+  font-size: 17px;
 
-    margin-bottom: 24px;
+  font-weight: 700;
 
-    background: rgba(255, 182, 193, 0.12);
+  line-height: 1.8;
 
-    border-left: 3px solid #f48fb1;
+  margin-bottom: 28px;
 
-    padding: 16px 20px;
-
-    border-radius: 12px;
-  }
-
-  .letter p + p {
-    margin-top: 12px;
-  }
-
-  .question {
-    color: #e91e8c;
-
-    font-size: 17px;
-    font-weight: 700;
-
-    line-height: 1.8;
-
-    margin-bottom: 28px;
-
-    background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       #fce4ec,
       #ffd6e7
     );
 
-    padding: 16px 20px;
+  padding: 16px 20px;
 
-    border-radius: 14px;
+  border-radius: 14px;
+}
+
+
+/* =========================
+   PAGE 2
+========================= */
+
+.big-heart {
+  font-size: 72px;
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  animation:
+    pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%, 100% {
+    transform: scale(1);
   }
 
-  /* =========================
-     PAGE 2
-  ========================= */
-
-  .big-heart {
-    font-size: 72px;
-    display: block;
-
-    margin-bottom: 18px;
-
-    animation: pulse 1.2s ease-in-out infinite;
+  50% {
+    transform: scale(1.15);
   }
 
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
+}
 
-    50% {
-      transform: scale(1.15);
-    }
-  }
+h2 {
+  color: #e91e8c;
 
-  h2 {
-    color: #e91e8c;
+  font-size: 22px;
 
-    font-size: 22px;
-    font-weight: 700;
+  font-weight: 700;
 
-    margin-bottom: 16px;
-  }
+  margin-bottom: 16px;
+}
 
-  .sub {
-    color: #8d4e75;
+.sub {
+  color: #8d4e75;
 
-    font-size: 16px;
-    line-height: 1.9;
+  font-size: 16px;
 
-    margin-bottom: 30px;
-  }
+  line-height: 1.9;
 
-  /* =========================
-     BUTTONS
-  ========================= */
+  margin-bottom: 30px;
+}
 
-  .buttons {
-    display: flex;
 
-    gap: 12px;
+/* =========================
+   BUTTONS
+========================= */
 
-    justify-content: center;
+.buttons {
+  display: flex;
 
-    flex-wrap: wrap;
-  }
+  gap: 12px;
 
-  .btn-yes,
-  .btn-next,
-  .btn-start {
-    padding: 13px 34px;
+  justify-content: center;
 
-    color: white;
+  flex-wrap: wrap;
+}
 
-    border: none;
-    border-radius: 50px;
+.btn-start,
+.btn-yes,
+.btn-next {
 
-    font-size: 16px;
-    font-weight: 700;
+  padding: 13px 34px;
 
-    cursor: pointer;
+  color: white;
 
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
+  border: none;
 
-    font-family: inherit;
-  }
+  border-radius: 50px;
 
-  .btn-start {
-    background: linear-gradient(
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+
+/* START */
+
+.btn-start {
+
+  background:
+    linear-gradient(
       135deg,
       #f06292,
       #e91e8c
     );
 
-    box-shadow:
-      0 4px 18px rgba(233, 30, 140, 0.3);
+  box-shadow:
+    0 4px 18px
+    rgba(233, 30, 140, 0.3);
 
-    padding: 15px 42px;
-    font-size: 17px;
-  }
+  padding:
+    15px 42px;
 
-  .btn-start:hover {
-    transform: scale(1.06);
+  font-size: 17px;
+}
 
-    box-shadow:
-      0 6px 24px rgba(233, 30, 140, 0.4);
-  }
+.btn-start:hover {
 
-  .btn-yes {
-    background: linear-gradient(
+  transform: scale(1.06);
+
+  box-shadow:
+    0 6px 24px
+    rgba(233, 30, 140, 0.4);
+}
+
+
+/* YES */
+
+.btn-yes {
+
+  background:
+    linear-gradient(
       135deg,
       #f06292,
       #e91e8c
     );
 
-    box-shadow:
-      0 4px 18px rgba(233, 30, 140, 0.3);
-  }
+  box-shadow:
+    0 4px 18px
+    rgba(233, 30, 140, 0.3);
+}
 
-  .btn-yes:hover {
-    transform: scale(1.06);
+.btn-yes:hover {
 
-    box-shadow:
-      0 6px 24px rgba(233, 30, 140, 0.4);
-  }
+  transform: scale(1.06);
 
-  .btn-next {
-    background: linear-gradient(
+  box-shadow:
+    0 6px 24px
+    rgba(233, 30, 140, 0.4);
+}
+
+
+/* NEXT */
+
+.btn-next {
+
+  background:
+    linear-gradient(
       135deg,
       #ce93d8,
       #ab47bc
     );
 
-    box-shadow:
-      0 4px 18px rgba(171, 71, 188, 0.25);
-  }
+  box-shadow:
+    0 4px 18px
+    rgba(171, 71, 188, 0.25);
+}
 
-  .btn-next:hover {
-    transform: scale(1.06);
-  }
+.btn-next:hover {
+  transform: scale(1.06);
+}
 
-  .btn-no {
-    padding: 13px 34px;
 
-    background: white;
+/* NO */
 
-    color: #bbb;
+.btn-no {
 
-    border: 1.5px solid #f0c0d0;
+  padding:
+    13px 34px;
 
-    border-radius: 50px;
+  background: white;
 
-    font-size: 16px;
+  color: #bbb;
 
-    cursor: pointer;
+  border:
+    1.5px solid #f0c0d0;
 
-    transition: all 0.15s;
+  border-radius: 50px;
 
-    position: relative;
+  font-size: 16px;
 
-    font-family: inherit;
-  }
+  cursor: pointer;
 
-  #msg {
-    font-size: 14px;
+  transition: all 0.15s;
 
-    color: #e91e8c;
+  position: relative;
 
-    min-height: 22px;
+  font-family: inherit;
+}
 
-    margin-top: 12px;
 
-    font-weight: 600;
-  }
+/* =========================
+   MESSAGE / ANSWER
+========================= */
 
-  #answer {
-    display: none;
+#msg {
 
-    margin-top: 16px;
-  }
+  font-size: 14px;
 
-  .answer-title {
-    font-size: 28px;
+  color: #e91e8c;
 
-    color: #e91e8c;
+  min-height: 22px;
 
-    margin-bottom: 10px;
+  margin-top: 12px;
 
-    font-weight: 700;
-  }
+  font-weight: 600;
+}
 
-  .answer-sub {
-    font-size: 15px;
+#answer {
 
-    color: #9e6880;
-  }
+  display: none;
 
-  /* =========================
-     DIVIDER
-  ========================= */
+  margin-top: 16px;
+}
 
-  .divider {
-    height: 1px;
+.answer-title {
 
-    background: linear-gradient(
+  font-size: 28px;
+
+  color: #e91e8c;
+
+  margin-bottom: 10px;
+
+  font-weight: 700;
+}
+
+.answer-sub {
+
+  font-size: 15px;
+
+  color: #9e6880;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+
+  height: 1px;
+
+  background:
+    linear-gradient(
       90deg,
       transparent,
       #f48fb1,
       transparent
     );
 
-    margin: 20px 0;
+  margin: 20px 0;
+}
+
+
+/* =========================
+   SOUNDCLOUD PLAYER
+========================= */
+
+/*
+   Trên điện thoại chỉ hiện
+   một nút 🎵 nhỏ.
+
+   Như vậy sẽ không che
+   nút "Còn nữa..."
+*/
+
+.soundcloud-player {
+
+  display: none;
+
+  position: fixed;
+
+  right: 14px;
+
+  bottom: 14px;
+
+  z-index: 20;
+}
+
+
+/* NÚT NHẠC NHỎ */
+
+.music-toggle {
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f06292,
+      #e91e8c
+    );
+
+  color: white;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 18px
+    rgba(233, 30, 140, 0.35);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  animation:
+    musicFloat 2s ease-in-out infinite;
+}
+
+@keyframes musicFloat {
+
+  0%, 100% {
+    transform: translateY(0);
   }
 
-  /* =========================
-     SOUNDCLOUD PLAYER
-  ========================= */
+  50% {
+    transform: translateY(-4px);
+  }
+
+}
+
+
+/* KHUNG SOUNDCLOUD */
+
+.soundcloud-content {
+
+  display: none;
+
+  width:
+    min(
+      360px,
+      calc(100vw - 28px)
+    );
+
+  padding: 10px;
+
+  border:
+    1px solid
+    rgba(233, 30, 140, 0.16);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  backdrop-filter:
+    blur(12px);
+
+  box-shadow:
+    0 7px 26px
+    rgba(233, 30, 140, 0.18);
+}
+
+
+/* KHI MỞ PLAYER */
+
+.soundcloud-player.open
+.soundcloud-content {
+
+  display: block;
+}
+
+.soundcloud-player.open
+.music-toggle {
+
+  display: none;
+}
+
+
+/* TIÊU ĐỀ PLAYER */
+
+.soundcloud-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin:
+    2px 4px 8px;
+
+  color: #e91e8c;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.soundcloud-title span {
+  font-size: 18px;
+}
+
+
+/* NÚT ĐÓNG */
+
+.music-close {
+
+  margin-left: auto;
+
+  width: 28px;
+  height: 28px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #fce4ec;
+
+  color: #e91e8c;
+
+  font-size: 20px;
+
+  line-height: 20px;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .page {
+
+    padding:
+      35px 24px;
+
+    /*
+      Thêm khoảng cách để nội dung
+      không bị sát màn hình.
+    */
+  }
+
+  .icon-wrap,
+  .big-heart {
+
+    font-size: 60px;
+  }
+
+  .start-heart {
+
+    font-size: 70px;
+  }
+
+  .start-title {
+
+    font-size: 22px;
+  }
+
+  .letter {
+
+    font-size: 14px;
+  }
+
+  .question {
+
+    font-size: 16px;
+  }
+
+  .answer-title {
+
+    font-size: 23px;
+  }
+
+  /*
+    Nút nhạc nhỏ hơn trên điện thoại
+  */
 
   .soundcloud-player {
-    display: none;
 
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 10;
+    right: 12px;
 
-    width: min(380px, calc(100vw - 36px));
-
-    padding: 10px;
-
-    border: 1px solid rgba(233, 30, 140, 0.16);
-
-    border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.92);
-
-    backdrop-filter: blur(12px);
-
-    box-shadow:
-      0 7px 26px rgba(233, 30, 140, 0.18);
+    bottom: 12px;
   }
 
-  .soundcloud-player.show {
-    display: block;
+  .music-toggle {
+
+    width: 44px;
+    height: 44px;
+
+    font-size: 19px;
   }
 
-  .soundcloud-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .soundcloud-content {
 
-    margin: 2px 4px 8px;
-
-    color: #e91e8c;
-
-    font-size: 13px;
-
-    font-weight: 700;
+    width:
+      calc(100vw - 24px);
   }
 
-  .soundcloud-title span {
-    font-size: 18px;
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (max-width: 380px) {
+
+  .page {
+
+    padding:
+      28px 18px;
   }
 
-  /* =========================
-     MOBILE
-  ========================= */
+  .letter {
 
-  @media (max-width: 600px) {
+    padding:
+      14px 16px;
 
-    .page {
-      padding: 35px 24px;
-    }
+    font-size: 13.5px;
 
-    .soundcloud-player {
-      right: 12px;
-      bottom: 12px;
-
-      width: calc(100vw - 24px);
-    }
-
-    .soundcloud-title {
-      margin-bottom: 6px;
-    }
-
-    .icon-wrap,
-    .big-heart {
-      font-size: 60px;
-    }
-
-    .start-heart {
-      font-size: 70px;
-    }
-
-    .start-title {
-      font-size: 22px;
-    }
-
-    .letter {
-      font-size: 14px;
-    }
-
-    .question {
-      font-size: 16px;
-    }
-
-    .answer-title {
-      font-size: 23px;
-    }
+    line-height: 1.85;
   }
+
+  .question {
+
+    padding:
+      14px 16px;
+
+    font-size: 15px;
+  }
+
+  .btn-next,
+  .btn-start,
+  .btn-yes,
+  .btn-no {
+
+    padding:
+      12px 26px;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =========================
-     FLOATING HEARTS / PETALS
+     FLOATING HEARTS
 ========================= -->
 
-<div class="petals" id="petals"></div>
+<div
+  class="petals"
+  id="petals">
+</div>
+
 
 
 <!-- =========================
      TRANG BẮT ĐẦU
 ========================= -->
 
-<div class="page active" id="startPage">
+<div
+  class="page active"
+  id="startPage">
 
-  <span class="start-heart">💌</span>
+  <span class="start-heart">
+    💌
+  </span>
 
   <div class="start-title">
-    Anh có một điều muốn nói với em...
+
+    Anh có một điều muốn nói
+    với em...
+
   </div>
 
   <div class="start-sub">
-    Một chút tâm tình anh đã chuẩn bị dành riêng cho em 💕
+
+    Một chút tâm tình anh đã
+    chuẩn bị dành riêng cho em 💕
+
     <br>
+
     Nhấn bắt đầu để mở nhé 🌸
+
   </div>
+
 
   <button
     class="btn-start"
     onclick="startExperience()"
   >
+
     Bắt đầu 💗
+
   </button>
+
 <!-- 
   <div class="start-note">
+
     🎵 Nhạc sẽ được mở cùng lúc
+
   </div> -->
 
 </div>
 
 
+
 <!-- =========================
-     SOUNDCLOUD MUSIC
-     Chỉ tạo sau khi bấm Bắt đầu
+     SOUNDCLOUD PLAYER
 ========================= -->
 
-<div class="soundcloud-player" id="musicPlayer">
+<div
+  class="soundcloud-player"
+  id="musicPlayer">
 
-  <div class="soundcloud-title">
-    <span>🎵</span>
-    <div>Nhạc dành cho em 💕</div>
+
+  <!-- NÚT THU NHỎ -->
+
+  <button
+    class="music-toggle"
+    onclick="toggleMusicPlayer()"
+    aria-label="Mở nhạc"
+  >
+
+    🎵
+
+  </button>
+
+
+  <!-- PLAYER -->
+
+  <div class="soundcloud-content">
+
+
+    <div class="soundcloud-title">
+
+      <span>🎵</span>
+
+      <div>
+        Nhạc dành cho em 💕
+      </div>
+
+
+      <button
+        class="music-close"
+        onclick="toggleMusicPlayer()"
+      >
+
+        ×
+
+      </button>
+
+    </div>
+
+
+    <iframe
+      id="soundcloudFrame"
+      width="100%"
+      height="80"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      style="border-radius:12px;"
+    >
+    </iframe>
+
   </div>
 
-  <iframe
-    id="soundcloudFrame"
-    width="100%"
-    height="80"
-    scrolling="no"
-    frameborder="no"
-    allow="autoplay"
-    style="border-radius:12px;"
-  ></iframe>
-
 </div>
+
 
 
 <!-- =========================
      PAGE 1
 ========================= -->
 
-<div class="page" id="page1">
+<div
+  class="page"
+  id="page1">
 
-  <span class="icon-wrap">💝</span>
 
-  <h1>💌 Gửi Hạnh Tiên xinh đẹp...</h1>
+  <span class="icon-wrap">
+    💝
+  </span>
 
-  <div class="divider">♥</div>
+
+  <h1>
+    💌 Gửi Hạnh Tiên xinh đẹp...
+  </h1>
+
+
+  <div class="divider">
+    ♥
+  </div>
+
 
   <div class="letter">
 
-    <p>
-      Anh biết yêu xa thiệt thòi cho em nhiều lắm.
-    </p>
 
     <p>
-      Những ngày mệt mỏi hay mọi thứ chẳng suôn sẻ,
-      em ở một mình chắc cũng tủi thân nhiều.
+      Anh biết yêu xa thiệt thòi
+      cho em nhiều lắm.
     </p>
 
+
     <p>
-      Anh chẳng ở bên để ôm hay lo cho em trực tiếp được,
-      chỉ biết chờ hết giờ làm để gọi điện nghe em nói chuyện.
+      Những ngày mệt mỏi hay mọi
+      thứ chẳng suôn sẻ,
+      em ở một mình chắc cũng
+      tủi thân nhiều.
     </p>
+
+
+    <p>
+      Anh chẳng ở bên để ôm hay
+      lo cho em trực tiếp được,
+      chỉ biết chờ hết giờ làm để
+      gọi điện nghe em nói chuyện.
+    </p>
+
 
     <p>
       Nhưng thật lòng, dù xa nhau,
-      em vẫn là lý do khiến anh mỉm cười
-      và có động lực mỗi ngày.
+      em vẫn là lý do khiến anh
+      mỉm cười và có động lực
+      mỗi ngày.
     </p>
 
+
   </div>
+
+
 
   <div class="question">
 
     Em cho anh một cơ hội
+
     <br>
 
-    để anh có thể bên em nhé? 💕🌸
+    để anh có thể bên em nhé?
+    💕🌸
 
   </div>
+
+
 
   <div class="buttons">
 
@@ -638,29 +1041,42 @@
       class="btn-next"
       onclick="goPage2()"
     >
-      Còn nữa..... &nbsp;→ 💗
+
+      Còn nữa.....
+      &nbsp;→ 💗
+
     </button>
 
   </div>
 
+
 </div>
+
 
 
 <!-- =========================
      PAGE 2
 ========================= -->
 
-<div class="page" id="page2">
+<div
+  class="page"
+  id="page2">
 
-  <span class="big-heart">💖</span>
+
+  <span class="big-heart">
+    💖
+  </span>
+
 
   <h2>
-    Vậy nên anh muốn hỏi rằng...
+    Vậy nên anh muốn nói rằng...
   </h2>
+
 
   <p class="sub">
 
-    Để anh được đồng hành cùng nhau được không? 🌸
+    Cho anh được đồng hành cùng em nhé?
+    🌸
 
     <br>
 
@@ -671,19 +1087,31 @@
         color:#e91e8c;
       "
     >
-      Làm người yêu anh nhé 💕💗
+
+      Làm người yêu anh nhé
+      💕💗
+
     </span>
 
   </p>
 
-  <div class="buttons" id="btnGroup">
+
+
+  <div
+    class="buttons"
+    id="btnGroup">
+
 
     <button
       class="btn-yes"
       onclick="sayYes()"
     >
+
       Có chứ! 💕💖
+
     </button>
+
+
 
     <button
       class="btn-no"
@@ -691,39 +1119,63 @@
       onmouseover="runAway(event)"
       onclick="tricked()"
     >
+
       Không... 🙃
+
     </button>
 
+
   </div>
+
+
 
   <p id="msg"></p>
 
+
+
   <div id="answer">
 
-    <div class="divider">♥</div>
+
+    <div class="divider">
+      ♥
+    </div>
+
 
     <p class="answer-title">
+
       🎉 Em tuyệt vời nhất rồi! 💖
+
     </p>
+
 
     <p class="answer-sub">
-      Cảm ơn em đã tin tưởng và ở đây bên anh 🌸💕
+
+      Cảm ơn em đã tin tưởng
+      và ở đây bên anh 🌸💕
+
     </p>
 
+
   </div>
+
 
 </div>
 
 
+
 <script>
+
 
 /* =========================
    FLOATING HEARTS / PETALS
 ========================= */
 
-const wrap = document.getElementById('petals');
+const wrap =
+  document.getElementById('petals');
+
 
 const items = [
+
   '🌸',
   '🌺',
   '🌷',
@@ -736,31 +1188,61 @@ const items = [
   '💓',
   '♥',
   '🌸'
+
 ];
 
-for (let i = 0; i < 30; i++) {
 
-  const el = document.createElement('div');
+for (
+  let i = 0;
+  i < 30;
+  i++
+) {
 
-  el.className = 'petal';
+  const el =
+    document.createElement('div');
+
+
+  el.className =
+    'petal';
+
 
   el.textContent =
-    items[Math.floor(Math.random() * items.length)];
+    items[
+      Math.floor(
+        Math.random() *
+        items.length
+      )
+    ];
+
 
   el.style.left =
     Math.random() * 100 + '%';
 
+
   el.style.animationDuration =
-    (5 + Math.random() * 9) + 's';
+    (
+      5 +
+      Math.random() * 9
+    ) + 's';
+
 
   el.style.animationDelay =
-    (Math.random() * 10) + 's';
+    (
+      Math.random() * 10
+    ) + 's';
+
 
   el.style.fontSize =
-    (12 + Math.random() * 18) + 'px';
+    (
+      12 +
+      Math.random() * 18
+    ) + 'px';
+
 
   wrap.appendChild(el);
+
 }
+
 
 
 /* =========================
@@ -769,85 +1251,144 @@ for (let i = 0; i < 30; i++) {
 
 function startExperience() {
 
-  /*
-    Quan trọng:
-    Không tạo iframe SoundCloud khi trang vừa mở.
-
-    Chỉ tạo iframe sau khi người dùng bấm
-    "Bắt đầu".
-
-    Đây là thao tác người dùng mà trình duyệt
-    cho phép dùng để khởi tạo autoplay.
-  */
 
   const frame =
-    document.getElementById('soundcloudFrame');
+    document.getElementById(
+      'soundcloudFrame'
+    );
+
 
   const musicPlayer =
-    document.getElementById('musicPlayer');
+    document.getElementById(
+      'musicPlayer'
+    );
+
 
   const startPage =
-    document.getElementById('startPage');
+    document.getElementById(
+      'startPage'
+    );
+
 
   const page1 =
-    document.getElementById('page1');
+    document.getElementById(
+      'page1'
+    );
 
 
-  /* Tạo SoundCloud player */
+
+  /*
+    Tạo SoundCloud SAU KHI
+    người dùng bấm Bắt đầu.
+
+    Điều này giúp vượt qua
+    giới hạn autoplay của
+    trình duyệt tốt hơn.
+  */
 
   frame.src =
     'https://w.soundcloud.com/player/' +
+
     '?url=https%3A%2F%2Fsoundcloud.com%2Fleedang%2Fhanee-c-o-ost' +
+
     '&color=%23e91e8c' +
+
     '&auto_play=true' +
+
     '&hide_related=true' +
+
     '&show_comments=false' +
+
     '&show_user=true' +
+
     '&show_reposts=false' +
+
     '&show_teaser=false';
 
 
-  /* Hiện trình phát */
 
-  musicPlayer.classList.add('show');
+  /*
+    Hiện nút 🎵
+  */
 
+  musicPlayer.style.display =
+    'block';
 
-  /* Chuyển sang nội dung */
-
-  startPage.classList.remove('active');
-
-  page1.classList.add('active');
 
 
   /*
-    Thử phát lại sau khi iframe tải.
-    Nếu trình duyệt cho phép autoplay,
-    nhạc sẽ bắt đầu ngay.
+    Chuyển từ màn hình bắt đầu
+    sang lá thư.
   */
 
-  frame.onload = function() {
+  startPage
+    .classList
+    .remove('active');
 
-    try {
 
-      frame.contentWindow.postMessage(
-        JSON.stringify({
-          method: 'play'
-        }),
-        'https://w.soundcloud.com'
-      );
+  page1
+    .classList
+    .add('active');
 
-    } catch (error) {
 
-      console.log(
-        'SoundCloud play request:',
-        error
-      );
 
-    }
+  /*
+    Gửi lệnh PLAY cho SoundCloud
+    sau khi iframe tải.
+  */
 
-  };
+  frame.onload =
+    function() {
+
+      try {
+
+        frame.contentWindow
+          .postMessage(
+
+            JSON.stringify({
+              method: 'play'
+            }),
+
+            'https://w.soundcloud.com'
+
+          );
+
+      }
+
+      catch (error) {
+
+        console.log(
+          'SoundCloud:',
+          error
+        );
+
+      }
+
+    };
 
 }
+
+
+
+/* =========================
+   MỞ / ĐÓNG PLAYER
+========================= */
+
+function toggleMusicPlayer() {
+
+
+  const player =
+    document.getElementById(
+      'musicPlayer'
+    );
+
+
+  player.classList.toggle(
+    'open'
+  );
+
+}
+
 
 
 /* =========================
@@ -856,15 +1397,20 @@ function startExperience() {
 
 function goPage2() {
 
+
   document
     .getElementById('page1')
-    .classList.remove('active');
+    .classList
+    .remove('active');
+
 
   document
     .getElementById('page2')
-    .classList.add('active');
+    .classList
+    .add('active');
 
 }
+
 
 
 /* =========================
@@ -881,27 +1427,39 @@ const noMsgs = [
 
 ];
 
+
 let noCount = 0;
+
 
 
 function runAway(e) {
 
+
   const btn =
-    document.getElementById('noBtn');
+    document.getElementById(
+      'noBtn'
+    );
+
 
   const card =
     btn.closest('.page');
+
 
   const maxX =
     card.offsetWidth -
     btn.offsetWidth -
     40;
 
+
   const randomX =
-    Math.floor(Math.random() * maxX);
+    Math.floor(
+      Math.random() * maxX
+    );
+
 
   const randomY =
     (Math.random() - 0.5) * 60;
+
 
   btn.style.transform =
     `translate(
@@ -912,20 +1470,33 @@ function runAway(e) {
 }
 
 
+
 function tricked() {
 
-  document.getElementById('msg').textContent =
-    noMsgs[noCount % noMsgs.length];
+
+  document
+    .getElementById('msg')
+    .textContent =
+      noMsgs[
+        noCount %
+        noMsgs.length
+      ];
+
 
   noCount++;
 
+
   if (noCount >= noMsgs.length) {
 
-    setTimeout(sayYes, 700);
+    setTimeout(
+      sayYes,
+      700
+    );
 
   }
 
 }
+
 
 
 /* =========================
@@ -934,31 +1505,44 @@ function tricked() {
 
 function sayYes() {
 
+
   document
     .querySelector('#page2 h2')
-    .style.display = 'none';
+    .style.display =
+      'none';
+
 
   document
     .querySelector('#page2 .sub')
-    .style.display = 'none';
+    .style.display =
+      'none';
+
 
   document
     .querySelector('#page2 .big-heart')
-    .style.display = 'none';
+    .style.display =
+      'none';
+
 
   document
     .getElementById('btnGroup')
-    .style.display = 'none';
+    .style.display =
+      'none';
+
 
   document
     .getElementById('msg')
-    .textContent = '';
+    .textContent =
+      '';
+
 
   document
     .getElementById('answer')
-    .style.display = 'block';
+    .style.display =
+      'block';
 
 }
+
 
 </script>
 
