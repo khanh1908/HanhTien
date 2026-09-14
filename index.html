@@ -31,7 +31,8 @@ body {
 
   font-family: 'Nunito', 'Georgia', sans-serif;
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 
@@ -41,25 +42,18 @@ body {
 
 .petals {
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
   pointer-events: none;
-
   z-index: 0;
 }
 
 .petal {
   position: absolute;
-
   bottom: -40px;
-
   animation: floatUp linear infinite;
-
   opacity: 0.7;
 }
 
@@ -70,7 +64,6 @@ body {
       translateY(0)
       rotate(0deg)
       scale(1);
-
     opacity: 0.8;
   }
 
@@ -79,7 +72,6 @@ body {
       translateY(-110vh)
       rotate(540deg)
       scale(0.5);
-
     opacity: 0;
   }
 
@@ -129,7 +121,6 @@ body {
 
   from {
     opacity: 0;
-
     transform:
       translateY(20px)
       scale(0.97);
@@ -137,7 +128,6 @@ body {
 
   to {
     opacity: 1;
-
     transform:
       translateY(0)
       scale(1);
@@ -152,41 +142,24 @@ body {
 
 .start-heart {
   font-size: 82px;
-
   display: block;
-
   margin-bottom: 18px;
-
   animation:
     pulse 1.3s ease-in-out infinite;
 }
 
 .start-title {
   color: #e91e8c;
-
   font-size: 25px;
-
   font-weight: 700;
-
   margin-bottom: 14px;
 }
 
 .start-sub {
   color: #8d4e75;
-
   font-size: 15.5px;
-
   line-height: 1.8;
-
   margin-bottom: 28px;
-}
-
-.start-note {
-  font-size: 13px;
-
-  color: #b47791;
-
-  margin-top: 14px;
 }
 
 
@@ -196,11 +169,8 @@ body {
 
 .icon-wrap {
   font-size: 72px;
-
   display: block;
-
   margin-bottom: 16px;
-
   animation:
     bounce 1.6s ease-in-out infinite;
 }
@@ -219,25 +189,17 @@ body {
 
 h1 {
   color: #e91e8c;
-
   font-size: 20px;
-
   font-weight: 700;
-
   margin-bottom: 24px;
-
   letter-spacing: 1px;
 }
 
 .letter {
   color: #6d4c61;
-
   font-size: 15.5px;
-
   line-height: 2;
-
   text-align: left;
-
   margin-bottom: 24px;
 
   background:
@@ -257,13 +219,9 @@ h1 {
 
 .question {
   color: #e91e8c;
-
   font-size: 17px;
-
   font-weight: 700;
-
   line-height: 1.8;
-
   margin-bottom: 28px;
 
   background:
@@ -285,11 +243,8 @@ h1 {
 
 .big-heart {
   font-size: 72px;
-
   display: block;
-
   margin-bottom: 18px;
-
   animation:
     pulse 1.2s ease-in-out infinite;
 }
@@ -308,21 +263,15 @@ h1 {
 
 h2 {
   color: #e91e8c;
-
   font-size: 22px;
-
   font-weight: 700;
-
   margin-bottom: 16px;
 }
 
 .sub {
   color: #8d4e75;
-
   font-size: 16px;
-
   line-height: 1.9;
-
   margin-bottom: 30px;
 }
 
@@ -333,11 +282,8 @@ h2 {
 
 .buttons {
   display: flex;
-
   gap: 12px;
-
   justify-content: center;
-
   flex-wrap: wrap;
 }
 
@@ -540,14 +486,6 @@ h2 {
    SOUNDCLOUD PLAYER
 ========================= */
 
-/*
-   Trên điện thoại chỉ hiện
-   một nút 🎵 nhỏ.
-
-   Như vậy sẽ không che
-   nút "Còn nữa..."
-*/
-
 .soundcloud-player {
 
   display: none;
@@ -560,9 +498,6 @@ h2 {
 
   z-index: 20;
 }
-
-
-/* NÚT NHẠC NHỎ */
 
 .music-toggle {
 
@@ -612,9 +547,6 @@ h2 {
 
 }
 
-
-/* KHUNG SOUNDCLOUD */
-
 .soundcloud-content {
 
   display: none;
@@ -644,9 +576,6 @@ h2 {
     rgba(233, 30, 140, 0.18);
 }
 
-
-/* KHI MỞ PLAYER */
-
 .soundcloud-player.open
 .soundcloud-content {
 
@@ -658,9 +587,6 @@ h2 {
 
   display: none;
 }
-
-
-/* TIÊU ĐỀ PLAYER */
 
 .soundcloud-title {
 
@@ -683,9 +609,6 @@ h2 {
 .soundcloud-title span {
   font-size: 18px;
 }
-
-
-/* NÚT ĐÓNG */
 
 .music-close {
 
@@ -721,64 +644,48 @@ h2 {
     padding:
       35px 24px;
 
-    /*
-      Thêm khoảng cách để nội dung
-      không bị sát màn hình.
-    */
+    max-height: calc(100vh - 24px);
+
+    overflow-y: auto;
   }
 
   .icon-wrap,
   .big-heart {
-
     font-size: 60px;
   }
 
   .start-heart {
-
     font-size: 70px;
   }
 
   .start-title {
-
     font-size: 22px;
   }
 
   .letter {
-
     font-size: 14px;
   }
 
   .question {
-
     font-size: 16px;
   }
 
   .answer-title {
-
     font-size: 23px;
   }
 
-  /*
-    Nút nhạc nhỏ hơn trên điện thoại
-  */
-
   .soundcloud-player {
-
     right: 12px;
-
     bottom: 12px;
   }
 
   .music-toggle {
-
     width: 44px;
     height: 44px;
-
     font-size: 19px;
   }
 
   .soundcloud-content {
-
     width:
       calc(100vw - 24px);
   }
@@ -786,16 +693,14 @@ h2 {
 }
 
 
-/* =========================
-   SMALL PHONE
-========================= */
-
 @media (max-width: 380px) {
 
   .page {
 
     padding:
-      28px 18px;
+      28px 18px 40px;
+
+    max-height: calc(100vh - 16px);
   }
 
   .letter {
@@ -844,7 +749,6 @@ h2 {
 </div>
 
 
-
 <!-- =========================
      TRANG BẮT ĐẦU
 ========================= -->
@@ -885,15 +789,7 @@ h2 {
 
   </button>
 
-<!-- 
-  <div class="start-note">
-
-    🎵 Nhạc sẽ được mở cùng lúc
-
-  </div> -->
-
 </div>
-
 
 
 <!-- =========================
@@ -903,9 +799,6 @@ h2 {
 <div
   class="soundcloud-player"
   id="musicPlayer">
-
-
-  <!-- NÚT THU NHỎ -->
 
   <button
     class="music-toggle"
@@ -918,10 +811,7 @@ h2 {
   </button>
 
 
-  <!-- PLAYER -->
-
   <div class="soundcloud-content">
-
 
     <div class="soundcloud-title">
 
@@ -930,7 +820,6 @@ h2 {
       <div>
         Nhạc dành cho em 💕
       </div>
-
 
       <button
         class="music-close"
@@ -960,7 +849,6 @@ h2 {
 </div>
 
 
-
 <!-- =========================
      PAGE 1
 ========================= -->
@@ -969,57 +857,41 @@ h2 {
   class="page"
   id="page1">
 
-
   <span class="icon-wrap">
     💝
   </span>
-
 
   <h1>
     💌 Gửi Hạnh Tiên xinh đẹp...
   </h1>
 
-
   <div class="divider">
     ♥
   </div>
 
-
   <div class="letter">
 
-
     <p>
-      Anh biết yêu xa thiệt thòi
-      cho em nhiều lắm.
+      Thật sự, anh rất xin lỗi nếu khoảng thời gian qua anh đã khiến em cảm thấy anh mập mờ, không rõ ràng hay làm em phải suy nghĩ nhiều. Đó chưa bao giờ là điều anh muốn.
     </p>
 
-
     <p>
-      Những ngày mệt mỏi hay mọi
-      thứ chẳng suôn sẻ,
-      em ở một mình chắc cũng
-      tủi thân nhiều.
+      Chỉ là anh đã có quá nhiều điều muốn nói với em, nhưng lại không biết phải bắt đầu từ đâu, và cũng sợ rằng nếu không nói ra ngay lúc này thì có lẽ anh sẽ chẳng còn cơ hội nào để nói nữa.
     </p>
 
-
     <p>
-      Anh chẳng ở bên để ôm hay
-      lo cho em trực tiếp được,
-      chỉ biết chờ hết giờ làm để
-      gọi điện nghe em nói chuyện.
+      Vì vậy, lần này anh muốn thành thật với em.
     </p>
 
-
     <p>
-      Nhưng thật lòng, dù xa nhau,
-      em vẫn là lý do khiến anh
-      mỉm cười và có động lực
-      mỗi ngày.
+      Anh không biết tương lai của mình sẽ như thế nào, cũng không dám hứa rằng mọi thứ sẽ luôn dễ dàng. Nhưng anh biết rằng anh thật sự muốn được ở bên em, muốn nghiêm túc với tình cảm này và muốn cùng em cố gắng, dù chúng ta đang cách nhau rất xa.
     </p>
 
+    <p>
+      Anh chỉ mong em cho anh một cơ hội để chứng minh rằng những tình cảm anh dành cho em là thật lòng. ❤️
+    </p>
 
   </div>
-
 
 
   <div class="question">
@@ -1032,7 +904,6 @@ h2 {
     💕🌸
 
   </div>
-
 
 
   <div class="buttons">
@@ -1049,9 +920,7 @@ h2 {
 
   </div>
 
-
 </div>
-
 
 
 <!-- =========================
@@ -1062,16 +931,13 @@ h2 {
   class="page"
   id="page2">
 
-
   <span class="big-heart">
     💖
   </span>
 
-
   <h2>
     Vậy nên anh muốn nói rằng...
   </h2>
-
 
   <p class="sub">
 
@@ -1096,11 +962,9 @@ h2 {
   </p>
 
 
-
   <div
     class="buttons"
     id="btnGroup">
-
 
     <button
       class="btn-yes"
@@ -1110,7 +974,6 @@ h2 {
       Có chứ! 💕💖
 
     </button>
-
 
 
     <button
@@ -1124,29 +987,23 @@ h2 {
 
     </button>
 
-
   </div>
-
 
 
   <p id="msg"></p>
 
 
-
   <div id="answer">
-
 
     <div class="divider">
       ♥
     </div>
-
 
     <p class="answer-title">
 
       🎉 Em tuyệt vời nhất rồi! 💖
 
     </p>
-
 
     <p class="answer-sub">
 
@@ -1155,15 +1012,189 @@ h2 {
 
     </p>
 
-
   </div>
-
 
 </div>
 
 
+<!-- =========================
+     PAGE 3
+========================= -->
+
+<div
+  class="page"
+  id="page3">
+
+  <span class="big-heart">
+    🤍
+  </span>
+
+  <h2>
+    Anh hiểu rồi...
+  </h2>
+
+  <div class="letter">
+
+    <p>
+      Dù em quyết định như nào thì anh vẫn tôn trọng lựa chọn của em.
+    </p>
+
+    <p>
+      Cảm ơn em rất nhiều vì đã dành thời gian đọc những lời anh muốn nói và lắng nghe những tình cảm này. 🌷
+    </p>
+
+  </div>
+
+  <div class="divider">
+    ♥
+  </div>
+
+  <p class="sub">
+    Anh chỉ mong em luôn vui vẻ và hạnh phúc. 🤍
+  </p>
+
+</div>
+
 
 <script>
+
+/* =====================================================
+   GOOGLE APPS SCRIPT
+===================================================== */
+
+/*
+   URL Web App MỚI của bạn.
+*/
+const GOOGLE_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbwtcxeve0ZRcJoSPTtZkAaZOcuGvgugXb8yCZ8SM7_4tq-eKhUeCHKGljdU5p2XDLM/exec';
+
+
+/*
+   Chỉ gửi một kết quả duy nhất
+   trong mỗi lần mở trang.
+*/
+let answerSent = false;
+
+
+/* =====================================================
+   GỬI KẾT QUẢ VỀ GOOGLE SHEET
+===================================================== */
+
+function sendAnswer(result) {
+
+  if (answerSent) {
+    return;
+  }
+
+  answerSent = true;
+
+  const data = new URLSearchParams();
+
+  data.append(
+    'answer',
+    result
+  );
+
+  data.append(
+    'time',
+    new Date().toLocaleString(
+      'vi-VN',
+      {
+        timeZone:
+          'Asia/Ho_Chi_Minh'
+      }
+    )
+  );
+
+  data.append(
+    'source',
+    'Trang thư tình'
+  );
+
+
+  /*
+     Ưu tiên sendBeacon.
+     Cách này phù hợp khi người dùng
+     vừa bấm nút và trang tiếp tục chuyển nội dung.
+  */
+
+  try {
+
+    if (
+      navigator.sendBeacon
+    ) {
+
+      const blob =
+        new Blob(
+          [
+            data.toString()
+          ],
+          {
+            type:
+              'application/x-www-form-urlencoded'
+          }
+        );
+
+      const sent =
+        navigator.sendBeacon(
+          GOOGLE_SCRIPT_URL,
+          blob
+        );
+
+      if (sent) {
+        return;
+      }
+
+    }
+
+
+    /*
+       Nếu sendBeacon không gửi được,
+       dùng fetch làm phương án dự phòng.
+    */
+
+    fetch(
+      GOOGLE_SCRIPT_URL,
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type':
+            'application/x-www-form-urlencoded'
+        },
+
+        body:
+          data.toString(),
+
+        mode:
+          'no-cors',
+
+        keepalive:
+          true
+      }
+    ).catch(
+      function(error) {
+
+        console.log(
+          'Không thể gửi kết quả:',
+          error
+        );
+
+      }
+    );
+
+  }
+
+  catch (error) {
+
+    console.log(
+      'Google Apps Script:',
+      error
+    );
+
+  }
+
+}
 
 
 /* =========================
@@ -1171,7 +1202,9 @@ h2 {
 ========================= */
 
 const wrap =
-  document.getElementById('petals');
+  document.getElementById(
+    'petals'
+  );
 
 
 const items = [
@@ -1199,7 +1232,9 @@ for (
 ) {
 
   const el =
-    document.createElement('div');
+    document.createElement(
+      'div'
+    );
 
 
   el.className =
@@ -1239,10 +1274,11 @@ for (
     ) + 'px';
 
 
-  wrap.appendChild(el);
+  wrap.appendChild(
+    el
+  );
 
 }
-
 
 
 /* =========================
@@ -1250,7 +1286,6 @@ for (
 ========================= */
 
 function startExperience() {
-
 
   const frame =
     document.getElementById(
@@ -1276,14 +1311,10 @@ function startExperience() {
     );
 
 
-
   /*
-    Tạo SoundCloud SAU KHI
-    người dùng bấm Bắt đầu.
-
-    Điều này giúp vượt qua
-    giới hạn autoplay của
-    trình duyệt tốt hơn.
+     Tạo SoundCloud sau khi bấm
+     "Bắt đầu" để trình duyệt
+     cho phép phát nhạc.
   */
 
   frame.src =
@@ -1306,36 +1337,23 @@ function startExperience() {
     '&show_teaser=false';
 
 
-
-  /*
-    Hiện nút 🎵
-  */
-
   musicPlayer.style.display =
     'block';
 
 
-
-  /*
-    Chuyển từ màn hình bắt đầu
-    sang lá thư.
-  */
-
   startPage
     .classList
-    .remove('active');
+    .remove(
+      'active'
+    );
 
 
   page1
     .classList
-    .add('active');
+    .add(
+      'active'
+    );
 
-
-
-  /*
-    Gửi lệnh PLAY cho SoundCloud
-    sau khi iframe tải.
-  */
 
   frame.onload =
     function() {
@@ -1369,13 +1387,11 @@ function startExperience() {
 }
 
 
-
 /* =========================
    MỞ / ĐÓNG PLAYER
 ========================= */
 
 function toggleMusicPlayer() {
-
 
   const player =
     document.getElementById(
@@ -1390,27 +1406,32 @@ function toggleMusicPlayer() {
 }
 
 
-
 /* =========================
    GO TO PAGE 2
 ========================= */
 
 function goPage2() {
 
+  document
+    .getElementById(
+      'page1'
+    )
+    .classList
+    .remove(
+      'active'
+    );
+
 
   document
-    .getElementById('page1')
+    .getElementById(
+      'page2'
+    )
     .classList
-    .remove('active');
-
-
-  document
-    .getElementById('page2')
-    .classList
-    .add('active');
+    .add(
+      'active'
+    );
 
 }
-
 
 
 /* =========================
@@ -1431,9 +1452,10 @@ const noMsgs = [
 let noCount = 0;
 
 
-
+/*
+   Di chuyển nút Không trên máy tính.
+*/
 function runAway(e) {
-
 
   const btn =
     document.getElementById(
@@ -1442,13 +1464,18 @@ function runAway(e) {
 
 
   const card =
-    btn.closest('.page');
+    btn.closest(
+      '.page'
+    );
 
 
   const maxX =
-    card.offsetWidth -
-    btn.offsetWidth -
-    40;
+    Math.max(
+      0,
+      card.offsetWidth -
+      btn.offsetWidth -
+      40
+    );
 
 
   const randomX =
@@ -1458,7 +1485,9 @@ function runAway(e) {
 
 
   const randomY =
-    (Math.random() - 0.5) * 60;
+    (
+      Math.random() - 0.5
+    ) * 60;
 
 
   btn.style.transform =
@@ -1470,12 +1499,15 @@ function runAway(e) {
 }
 
 
-
+/*
+   Xử lý khi bấm Không.
+*/
 function tricked() {
 
-
   document
-    .getElementById('msg')
+    .getElementById(
+      'msg'
+    )
     .textContent =
       noMsgs[
         noCount %
@@ -1486,17 +1518,59 @@ function tricked() {
   noCount++;
 
 
-  if (noCount >= noMsgs.length) {
+  /*
+     Sau lần thứ 3:
+
+     1. Gửi kết quả KHÔNG.
+     2. Chuyển sang Page 3.
+  */
+
+  if (
+    noCount >=
+    noMsgs.length
+  ) {
+
+    sendAnswer(
+      '🤍 KHÔNG'
+    );
+
 
     setTimeout(
-      sayYes,
-      700
+      goPage3,
+      500
     );
 
   }
 
 }
 
+
+/* =========================
+   GO TO PAGE 3
+========================= */
+
+function goPage3() {
+
+  document
+    .getElementById(
+      'page2'
+    )
+    .classList
+    .remove(
+      'active'
+    );
+
+
+  document
+    .getElementById(
+      'page3'
+    )
+    .classList
+    .add(
+      'active'
+    );
+
+}
 
 
 /* =========================
@@ -1505,44 +1579,64 @@ function tricked() {
 
 function sayYes() {
 
+  /*
+     Gửi kết quả ngay khi
+     bấm "Có chứ!"
+  */
+
+  sendAnswer(
+    '💕 CÓ'
+  );
+
 
   document
-    .querySelector('#page2 h2')
+    .querySelector(
+      '#page2 h2'
+    )
     .style.display =
       'none';
 
 
   document
-    .querySelector('#page2 .sub')
+    .querySelector(
+      '#page2 .sub'
+    )
     .style.display =
       'none';
 
 
   document
-    .querySelector('#page2 .big-heart')
+    .querySelector(
+      '#page2 .big-heart'
+    )
     .style.display =
       'none';
 
 
   document
-    .getElementById('btnGroup')
+    .getElementById(
+      'btnGroup'
+    )
     .style.display =
       'none';
 
 
   document
-    .getElementById('msg')
+    .getElementById(
+      'msg'
+    )
     .textContent =
       '';
 
 
   document
-    .getElementById('answer')
+    .getElementById(
+      'answer'
+    )
     .style.display =
       'block';
 
 }
-
 
 </script>
 
